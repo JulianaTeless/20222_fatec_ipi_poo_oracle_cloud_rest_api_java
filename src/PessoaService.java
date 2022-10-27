@@ -3,6 +3,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 //import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 //import java.util.logging.FileHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.var;
@@ -19,7 +23,18 @@ public class PessoaService {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
 
        var response = client.send(request, BodyHandlers.ofString()); // manipulador de corpo de resposta com o conteúdo de uma Striong
-        System.out.println(response.body());
+       // System.out.println(response.body());
+
+       JSONObject raiz = new JSONObject(response.body());
+       //empacotar e ganhar métodos para manipular 
+        //System.out.println(raiz);
+        JSONArray items = raiz.getJSONArray("items");
+        JSONObject primeiro = items.getJSONObject(0);
+        //System.out.println(primeiro);
+
+        String nome = primeiro.getString("nome");
+        System.out.println(nome);
+
     }  
       catch(Exception e){
         System.out.println(e.getMessage());
