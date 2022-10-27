@@ -27,7 +27,7 @@ public class PessoaService {
 
        JSONObject raiz = new JSONObject(response.body());
        //empacotar e ganhar métodos para manipular 
-        //System.out.println(raiz);
+        //System.out.println(raiz);5
         JSONArray items = raiz.getJSONArray("items");
         JSONObject primeiro = items.getJSONObject(0);
         //System.out.println(primeiro);
