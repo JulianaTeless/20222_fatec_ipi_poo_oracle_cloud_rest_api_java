@@ -9,4 +9,13 @@ public class Pessoa {
     private String nome;
     private int idade;
     private String hobby;
+
+    //toString , toda classe tem uma superclasse
+    // no java toda classe herda de object 
+
+    @Override
+    public String toString() {
+        
+        return String.format("nome: %s", nome);
+    }
 }
